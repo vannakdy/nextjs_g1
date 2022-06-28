@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Index.module.css'
+import styles from '../styles/Index.module.css';
+import Button from './component/button/Button';
 import {useState} from "react";
+import LayouteOne from './component/layout/LayouteOne';
 
 const Home = () => {
   var arr = [
@@ -43,9 +45,18 @@ const Home = () => {
     value2 = 1000
   }
 
+  const handleClickMe = () => {
+
+  }
 
   return (
-    <div className={styles.container}>
+    <LayouteOne>
+      <div className={styles.container}>
+
+      <Button
+        title={"Click ME"}
+        onClick={handleClickMe}
+      />
       <h1 style={{color:'red',paddingBottom:100}}>value1 : {value1}</h1>
       <h1>value2 : {value2}</h1>
       <h1>{PI}</h1>
@@ -80,6 +91,7 @@ const Home = () => {
         )
       })}
     </div>
+    </LayouteOne>
   )
 }
 export default Home;

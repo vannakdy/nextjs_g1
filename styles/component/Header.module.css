@@ -1,0 +1,10 @@
+.container_top {
+    padding: 10px;
+    background-color: #fb5231;
+    border-bottom: 0.5px #E1e1e1 solid;
+}
+.container {
+    height: 60px;
+    padding-left: 10px;
+    background-color: #fb5231;
+}
