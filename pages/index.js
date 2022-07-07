@@ -5,34 +5,14 @@ import Button from "./component/button/Button";
 import { useState } from "react";
 import LayouteOne from "./component/layout/LayouteOne";
 import HomeSlider from "./component/home/HomeSlider";
-
+import product from "../pages/data/product"
+import {Row,Col} from 'antd'
+import ProductImage from "./component/product/ProductImage";
+import ProductDes from "./component/product/ProductDes";
 const Home = () => {
-  var arr = [
-    {
-      id: 101,
-      name: "Dell",
-      catgory: "Computer",
-      color: "black",
-      price: 1000,
-    },
-    {
-      id: 102,
-      name: "Mac",
-      catgory: "Computer",
-      color: "black",
-      price: 1000,
-    },
-    {
-      id: 103,
-      name: "Lenevo",
-      catgory: "Computer",
-      color: "black",
-      price: 1000,
-    },
-  ];
 
   const [value1, setValue1] = useState(0);
-  const [listProdcut, setListProduct] = useState(arr);
+  const [listProdcut, setListProduct] = useState(product);
 
   var value2 = 0;
   value2 = 100;
@@ -52,43 +32,24 @@ const Home = () => {
     <LayouteOne>
       <HomeSlider />
       <div className={styles.container}>
-        <Button title={"Click ME"} onClick={handleClickMe} />
-        <h1 style={{ color: "red", paddingBottom: 100 }}>value1 : {value1}</h1>
-        <h1>value2 : {value2}</h1>
-        <h1>{PI}</h1>
-        <h1>{myFunction("Jon")}</h1>
-        <h1>Hello Next.js</h1>
-        <button onClick={handleClickBtn}>Click me</button>
-        <br />
-        {listProdcut.map((item, index) => {
-          return (
-            <div
-              key={index}
-              style={{
-                display: "flex",
-                marginBottom: 10,
-              }}
-            >
-              <div
-                style={{
-                  width: 90,
-                  height: 110,
-                  backgroundColor: "gray",
-                }}
-              />
-              <div
-                style={{
-                  paddingLeft: 15,
-                }}
-              >
-                <div>{item.name}</div>
-                <div>{item.catgory}</div>
-                <div>Color : {item.color}</div>
-                <div>Price : {item.price}</div>
-              </div>
-            </div>
-          );
-        })}
+        <Row gutter={[10,10]}>
+          {listProdcut.map((item, index) => {
+            return (
+              <Col span={6}>
+                <div>
+                  <ProductImage
+                    image={"https://zandokh.com/image/cache/catalog/products/2022-06/42732/Ten11-Lady-Top (3)-cr-450x672.jpg"}
+                  />
+                  <ProductDes
+                    // name={item.name}
+                    // full_prie={item.full_prie}
+                    {...item}
+                  />
+                </div>
+              </Col>
+            );
+          })}
+        </Row>
       </div>
     </LayouteOne>
   );
