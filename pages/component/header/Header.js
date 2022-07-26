@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../../../styles/component/Header.module.css"
 const Header = () => {
 
@@ -10,6 +11,12 @@ const Header = () => {
                 className={styles.container}
             >
                 <div>Stora</div>
+                <div>
+                    <Link href={"/"}>Home</Link>
+                    <Link href={"/about"}>About us</Link>
+                    <Link href={"/register"}>Register</Link>
+                    <Link href={"/login"}>Login</Link>
+                </div>
             </div>
         </div>
     )

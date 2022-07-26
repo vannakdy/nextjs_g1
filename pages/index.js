@@ -9,14 +9,35 @@ import product from "../pages/data/product"
 import {Row,Col} from 'antd'
 import ProductImage from "./component/product/ProductImage";
 import ProductDes from "./component/product/ProductDes";
+import { fetchData } from "./helper";
+import {useEffect} from "react";
+import DynamicContent from "./component/home/DynamicContent";
 const Home = () => {
 
   const [value1, setValue1] = useState(0);
   const [listProdcut, setListProduct] = useState(product);
+  const [home,setHome] = useState([]);
 
   var value2 = 0;
   value2 = 100;
   const PI = 3.14;
+
+  useEffect(()=>{
+   getHomeInfo();
+  },[])
+
+  const getHomeInfo = () => {
+    fetchData("api/Homepage/getHomePage",{},"POST").then(res=>{
+      if(!res.error){
+        setHome(res.home)
+      }
+    })
+
+    // https://zandokh.com:10007/apizandoV07/api/Homepage/getHomePage
+
+    // https://ten11kh.com:10010/apizdtenV08/api/MenuApp/getMenu
+
+  }
 
   const myFunction = (name) => {
     return name;
@@ -31,6 +52,9 @@ const Home = () => {
   return (
     <LayouteOne>
       <HomeSlider />
+      <DynamicContent
+        home={home}
+      />
       <div className={styles.container}>
         <Row gutter={[10,10]}>
           {listProdcut.map((item, index) => {
