@@ -8,3 +8,9 @@
     padding-left: 10px;
     background-color: #fb5231;
 }
+.txtMainBrand{
+    font-size: 34px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}

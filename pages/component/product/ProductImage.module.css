@@ -1,0 +1,37 @@
+.txtProductName{
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+.txtFullPrice{
+    font-size: 16px;
+    color: #e00b79;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+.txtDis{
+    font-size: 16px;
+    margin-right: 4px;
+    color: gray;
+}
+.txtSpecailLabel{
+    font-size: 18px;
+    color: brown;
+    position: absolute;
+    bottom: 120px;
+    left: 15px;
+}
+.boxColor{
+    width: 20px;
+    height: 20px;
+    border: 1px solid gray;
+    margin: 2px;
+}
+.rowColor{
+    display: flex;
+    flex-direction: row;
+   
+}
+.containDescription{
+    padding-top: 15px;
+    padding-bottom: 20px;
+}

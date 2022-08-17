@@ -2,6 +2,7 @@ import { Carousel, Row,Col } from 'antd';
 import React from 'react';
 import {config} from "../../helper";
 import {useRouter} from "next/router";
+import ProductImage from '../product/ProductImage';
 
 const DynamicContent = ({home}) => {
     const router = useRouter();
@@ -34,6 +35,7 @@ const DynamicContent = ({home}) => {
                                         onClick={()=>{
                                             router.push("/product/listproduct")
                                         }}
+                                        style={{cursor:"pointer"}}
                                         xs={12} sm={12} md={9}  lg={9}
                                     >
 
@@ -55,8 +57,9 @@ const DynamicContent = ({home}) => {
                 <>
                     {Content}
                         <h1 style={{textAlign:"center"}}>{item.title}</h1>
-                        <Row  gutter={5} style={{margin:"15px 0"}}>
+                        <Row justify="center"  gutter={5} style={{margin:"15px 0"}}>
                             {item.product && item.product.map((item1,index1)=>{
+                                    debugger
                                     return (
                                     <Col  
                                         onClick={()=>{
@@ -64,7 +67,15 @@ const DynamicContent = ({home}) => {
                                         }}
                                         xs={12} sm={12} md={6}  lg={6}
                                     >
-                                        <img
+                                        <ProductImage
+                                            // image={item1.image}
+                                            // product_name = {item1.product_name}
+                                            // full_price = {item1.full_price}
+                                            // spacial_label = {item1.spacial_label}
+                                            // color_codes = {item1.color_codes}
+                                            {...item1}
+                                        />
+                                        {/* <img
                                             src={config.imagePath + item1.image}
                                             width={"100%"}
                                         />
@@ -72,8 +83,7 @@ const DynamicContent = ({home}) => {
                                             <div>{item1.product_name}</div>
                                             <div>{item1.full_price}</div>
                                             <div>{item1.spacial_label}</div>
-                                            
-                                        </div>
+                                        </div> */}
                                     </Col>
                                     )
                                 

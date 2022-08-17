@@ -4,6 +4,7 @@ import LayouteOne from "../component/layout/LayouteOne";
 import { fetchData,config } from "../helper";
 import {useEffect} from "react";
 import { Col,Row,Pagination } from "antd";
+import ProductImage from "../component/product/ProductImage";
 const Listproduct = () => {
 
   const [list,setList] = useState([]);
@@ -28,14 +29,13 @@ const Listproduct = () => {
 
   return (
     <LayouteOne>
-      <Row gutter={[10,20]}>
+      <Row gutter={[10,20]} style={{padding:40}}>
         {list && list.map((item,index)=>{
             return (
                 <Col xs={12} sm={12} md={6} lg={6}  key={index}>
-                    <img
-                        src={config.imagePath + item.image}
-                        width={"100%"}
-                    />
+                   <ProductImage
+                      {...item}
+                   />
                 </Col>
             )
         })}
