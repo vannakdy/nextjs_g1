@@ -6,12 +6,15 @@ import {useEffect} from "react";
 import { Col,Row,Pagination } from "antd";
 import ProductImage from "../component/product/ProductImage";
 import ImageSlider from "../component/productdetails/ImageSlider";
+import ProductName from "../component/productdetails/ProductName";
 const Details = () => {
 
   const [productDetail, setProductDetails] = useState([]);
   const [productOptionColor, setProductOptionColor] = useState([]);
   const [productImageColor, setProductImageColor] = useState([]);
   const [colorId,setColorId] = useState(0)
+
+  const [imageSlider,setImageSlider] = useState([])
   
   
   useEffect(()=>{
@@ -35,17 +38,27 @@ const Details = () => {
         setColorId(product_detail.color_id)
         setProductOptionColor(res.product_option_color)
         setProductImageColor(res.product_image_color)
+        var imageSlider = res.product_option_color.filter((item,index)=>item.color_id == product_detail.color_id )
+        setImageSlider(imageSlider)
       }
     })
   }
 
   return (
     <LayouteOne>
-      <Row gutter={[10,20]} style={{padding:40}}>
-
+      <Row gutter={[10,20]} style={{padding:40,marginTop:30}}>
+        <Col sm={24} md={12} lg={12}>
         <ImageSlider 
-            data={productOptionColor}
+            data={imageSlider}
         />
+        </Col>
+        <Col sm={24} md={12} lg={12}>
+          <ProductName
+            productDetail={productDetail}
+            productImageColor={productImageColor}
+          />
+        </Col>
+
         {/* {list && list.map((item,index)=>{
             return (
                 <Col xs={12} sm={12} md={6} lg={6}  key={index}>
