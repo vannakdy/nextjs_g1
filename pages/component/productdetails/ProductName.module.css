@@ -19,3 +19,11 @@
 .containImageColor{
     margin-top: 10px;
 }
+
+.imageColor{
+    cursor: pointer;
+}
+.imageColorActive{
+    border: 2px black solid;
+    cursor: pointer;
+}

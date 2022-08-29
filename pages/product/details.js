@@ -44,30 +44,28 @@ const Details = () => {
     })
   }
 
+  const onClickColorImage = (paramItem) =>{
+    var imageSlide = productOptionColor.filter((item,index)=>item.color_id == paramItem.color_id )
+    setImageSlider(imageSlide)
+    setColorId(paramItem.color_id)
+  }
+
   return (
     <LayouteOne>
       <Row gutter={[10,20]} style={{padding:40,marginTop:30}}>
-        <Col sm={24} md={12} lg={12}>
-        <ImageSlider 
+        <Col sm={24} md={8} lg={8}>
+          <ImageSlider 
             data={imageSlider}
-        />
-        </Col>
-        <Col sm={24} md={12} lg={12}>
-          <ProductName
-            productDetail={productDetail}
-            productImageColor={productImageColor}
           />
         </Col>
-
-        {/* {list && list.map((item,index)=>{
-            return (
-                <Col xs={12} sm={12} md={6} lg={6}  key={index}>
-                   <ProductImage
-                      {...item}
-                   />
-                </Col>
-            )
-        })} */}
+        <Col style={{paddingLeft:30}} sm={24} md={16} lg={16}>
+          <ProductName
+            colorId={colorId}
+            productDetail={productDetail}
+            productImageColor={productImageColor}
+            onClickColorImage={onClickColorImage}
+          />
+        </Col>
       </Row>
       <Pagination />
     </LayouteOne>
