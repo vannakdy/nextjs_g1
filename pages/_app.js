@@ -3,6 +3,7 @@ import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import "../public/css/reset.min.css";
 import "../public/css/style.min.css";
 import "../public/css/boxicons.min.css";
+import 'react-slideshow-image/dist/styles.css'
 import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {

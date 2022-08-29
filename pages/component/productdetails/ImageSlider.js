@@ -1,6 +1,5 @@
 
 import {config} from "../../helper"
-import 'react-slideshow-image/dist/styles.css'
 import {Slide} from "react-slideshow-image"
 const ImageSlider = ({
     data
@@ -8,7 +7,7 @@ const ImageSlider = ({
 
     return (
         <div className="slide-container">
-            <Slide>
+            {data && data.length > 0 && <Slide>
                 {data.map((item,index)=>{
                         return (
                             <div key={index}>
@@ -19,7 +18,7 @@ const ImageSlider = ({
                             </div>
                         )
                 })} 
-           </Slide>
+           </Slide>}
         </div>
     )
 }
