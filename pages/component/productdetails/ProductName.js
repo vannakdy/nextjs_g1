@@ -1,18 +1,31 @@
 import  styles  from"./ProductName.module.css"
 import {config} from "../../helper"
-import { Row,Col } from "antd"
+import { Row,Col,Select } from "antd"
+const {Option} = Select
 const ProductName = ({
     colorId,
     productDetail,
     productImageColor,
-    onClickColorImage
+    onClickColorImage,
+    productSize
 }) => {
-
+    var size = productSize.filter((item,index)=> item.color_id == colorId)
     return (
         <div>
             <div className={styles.txtProductName}>{productDetail.product_name}</div>
             <div className={styles.txtModel}>Model : {productDetail.model}</div>
-            <div className={styles.textPrice}>{productDetail.full_price}</div>
+            <div>
+                {
+                   ( productDetail.discount != null && productDetail.discount != 0 ) ? 
+                    <div className="container_price">
+                        <div className={styles.textFullPrice}><del>{productDetail.full_price}</del></div>
+                        <div className={styles.textDiscount}>{productDetail.discount} %</div>
+                        <div className={styles.textPrice}><del>{productDetail.discount_price}</del></div>
+                    </div>
+                    :
+                    <div className={styles.textPrice}>$ USD {productDetail.full_price}</div>
+                }
+            </div>
             
             <div className={styles.txtFeature}>{productDetail.product_feature}</div>
 
@@ -33,6 +46,31 @@ const ProductName = ({
                     })
                 }
             </Row>
+            <div className={styles.size_container}>
+                <Select
+                    showSearch
+                    style={{
+                        width: 300,
+                    }}
+                    placeholder="Select Size"
+                    optionFilterProp="children"
+                    filterOption={(input, option) => option.children.includes(input)}
+                    filterSort={(optionA, optionB) =>
+                        optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+                    }
+                >
+                    {size && size.map((item,index)=>{
+                        return(
+                            <Option key={index} value={item.option_value_id}>{item.size_name}</Option>
+                        )
+                    })}
+                </Select>
+            </div>
+
+            <div className={styles.btn_add_cart}>
+                <button>ADD TO CART</button>
+            </div>
+
         </div>
     )
 }

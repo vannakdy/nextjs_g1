@@ -9,9 +9,24 @@ import ImageSlider from "../component/productdetails/ImageSlider";
 import ProductName from "../component/productdetails/ProductName";
 const Details = () => {
 
+  
+
+  const myFunction = () => {
+    var value1 = 100 ;
+    var value2 = 10;
+    if(value1 > value1){
+      return true
+    }else{
+      return false
+    }
+  }
+
+  
+
   const [productDetail, setProductDetails] = useState([]);
   const [productOptionColor, setProductOptionColor] = useState([]);
   const [productImageColor, setProductImageColor] = useState([]);
+  const [productSize,setProductSize] = useState([])
   const [colorId,setColorId] = useState(0)
 
   const [imageSlider,setImageSlider] = useState([])
@@ -38,6 +53,7 @@ const Details = () => {
         setColorId(product_detail.color_id)
         setProductOptionColor(res.product_option_color)
         setProductImageColor(res.product_image_color)
+        setProductSize(res.product_color_size_stock)
         var imageSlider = res.product_option_color.filter((item,index)=>item.color_id == product_detail.color_id )
         setImageSlider(imageSlider)
       }
@@ -63,6 +79,7 @@ const Details = () => {
             colorId={colorId}
             productDetail={productDetail}
             productImageColor={productImageColor}
+            productSize={productSize}
             onClickColorImage={onClickColorImage}
           />
         </Col>

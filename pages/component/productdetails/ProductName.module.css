@@ -27,3 +27,29 @@
     border: 2px black solid;
     cursor: pointer;
 }
+
+.textPrice{
+    color: #e00b79;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.size_container{
+    margin-top: 15px;
+}
+
+.btn_add_cart{
+    margin-top: 20px;
+}
+
+.btn_add_cart button {
+    background-color: black;
+    color : white;
+    font-weight: bold;
+    height: 40px;
+    width: 300px;
+}
+
+.container_price div {
+    display:flex;
+}
