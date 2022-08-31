@@ -30,8 +30,20 @@
 
 .textPrice{
     color: #e00b79;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
+    margin-left: 10px;
+}
+
+.textFullPrice{
+    font-size: 18px;
+    color:gray;
+    text-decoration:line-through ;
+}
+.textDiscount{
+    font-size: 18px;
+    margin-left: 10px;
+    color: gray;
 }
 
 .size_container{
@@ -50,6 +62,19 @@
     width: 300px;
 }
 
-.container_price div {
+.container_price {
     display:flex;
+    flex-direction: row;
+
+}
+
+.containRecommen{
+    margin-top: 20px;
+    padding: 0px 20px;
+}
+
+.txtRecommend{
+    font-size: 36px;
+    margin-bottom: 10px; 
+    font-weight: bold;
 }

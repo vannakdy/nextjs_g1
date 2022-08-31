@@ -7,6 +7,7 @@ import { Col,Row,Pagination } from "antd";
 import ProductImage from "../component/product/ProductImage";
 import ImageSlider from "../component/productdetails/ImageSlider";
 import ProductName from "../component/productdetails/ProductName";
+import ProductRecommend from "../component/productdetails/ProductRecommend";
 const Details = () => {
 
   
@@ -28,6 +29,7 @@ const Details = () => {
   const [productImageColor, setProductImageColor] = useState([]);
   const [productSize,setProductSize] = useState([])
   const [colorId,setColorId] = useState(0)
+  const [productRecommend,setProductRecommend] = useState([])
 
   const [imageSlider,setImageSlider] = useState([])
   
@@ -54,6 +56,7 @@ const Details = () => {
         setProductOptionColor(res.product_option_color)
         setProductImageColor(res.product_image_color)
         setProductSize(res.product_color_size_stock)
+        setProductRecommend(res.product_recommended.list)
         var imageSlider = res.product_option_color.filter((item,index)=>item.color_id == product_detail.color_id )
         setImageSlider(imageSlider)
       }
@@ -84,7 +87,16 @@ const Details = () => {
           />
         </Col>
       </Row>
-      <Pagination />
+
+      <ProductRecommend 
+        title={"Product Recommend"}
+        data={productRecommend}
+      />
+
+      <ProductRecommend 
+        title={"Product Recently"}
+        data={productRecommend}
+      />
     </LayouteOne>
   );
 };

@@ -13,19 +13,20 @@ const ProductName = ({
     return (
         <div>
             <div className={styles.txtProductName}>{productDetail.product_name}</div>
-            <div className={styles.txtModel}>Model : {productDetail.model}</div>
             <div>
                 {
                    ( productDetail.discount != null && productDetail.discount != 0 ) ? 
-                    <div className="container_price">
-                        <div className={styles.textFullPrice}><del>{productDetail.full_price}</del></div>
-                        <div className={styles.textDiscount}>{productDetail.discount} %</div>
-                        <div className={styles.textPrice}><del>{productDetail.discount_price}</del></div>
+                    <div className={styles.container_price}>
+                        <div className={styles.textFullPrice}>$ USD {productDetail.full_price}</div>
+                        <div className={styles.textDiscount}>{productDetail.discount}%</div>
+                        <div className={styles.textPrice}>$ USD {productDetail.discount_price}</div>
                     </div>
                     :
                     <div className={styles.textPrice}>$ USD {productDetail.full_price}</div>
                 }
             </div>
+
+            <div className={styles.txtModel}>Model : {productDetail.model}</div>
             
             <div className={styles.txtFeature}>{productDetail.product_feature}</div>
 
