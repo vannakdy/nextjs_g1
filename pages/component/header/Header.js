@@ -4,14 +4,15 @@ import styles from "../../../styles/component/Header.module.css"
 // import "../../../public/css/style.min.css";
 // import "../../../public/css/boxicons.min.css";
 const Header = () => {
-
+    const firstname = localStorage.getItem("firstname")
+    const lastname = localStorage.getItem("lastname")
     return (
         <div>
             <body>
             <header class="header" id="header">
             <div class="wrapper container">
                 <div class="wrapper-left">
-                    <a href="./index.html" class="brand">Brand</a>
+                    <a href="./index.html" class="brand">Brand {lastname}</a>
                 </div>
                 <div class="wrapper-center">
                     <span class="overlay"></span>

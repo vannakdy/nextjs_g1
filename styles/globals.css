@@ -14,3 +14,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.txtBig{
+  font-size: 50px;
+  font-weight: bold;
+}

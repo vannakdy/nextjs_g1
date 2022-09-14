@@ -1,0 +1,10 @@
+.contain_input{
+    margin-top: 15px;
+}
+
+.text_input{
+    width: 100%;
+    padding:15px;
+    border: 1px #666 solid;
+    border-radius: 10px;
+}
