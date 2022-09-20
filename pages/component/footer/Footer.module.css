@@ -1,0 +1,15 @@
+.container {
+    padding: 20px;
+}
+
+.itemLink{
+    font-size: 18px;
+}
+
+.itemLink:hover{
+    text-decoration: underline;
+}
+
+.txtCustomer{
+    color: rgba(44, 43, 43, 0.889);
+}

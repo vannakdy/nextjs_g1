@@ -4,8 +4,12 @@ import styles from "../../../styles/component/Header.module.css"
 // import "../../../public/css/style.min.css";
 // import "../../../public/css/boxicons.min.css";
 const Header = () => {
-    const firstname = localStorage.getItem("firstname")
-    const lastname = localStorage.getItem("lastname")
+    var firstname = "", lastname = ""
+    if(typeof window != "undefined"){
+         firstname = localStorage.getItem("firstname")
+         lastname = localStorage.getItem("lastname")
+    }
+    
     return (
         <div>
             <body>
