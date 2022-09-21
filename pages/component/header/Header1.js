@@ -1,0 +1,128 @@
+import Link from "next/link";
+import React from "react"
+import styles from "../../../styles/component/Header1.module.css"
+// import "../../../public/css/reset.min.css";
+// import "../../../public/css/style.min.css";
+// import "../../../public/css/boxicons.min.css";
+import {
+    MenuFoldOutlined,
+    SmileOutlined,
+    DownOutlined
+} from "@ant-design/icons";
+import {
+    Drawer,
+    Dropdown,
+    Space,
+    Menu
+} from "antd"
+const Header = () => {
+    const [open,setOpen] = React.useState(false)
+
+    const onClose= () => {
+        setOpen(false)
+    }
+
+    const handleOpenDrawer = () => {
+        setOpen(true)
+    }
+
+     var firstname = "", lastname = "", is_login;
+    if(typeof window != "undefined"){
+         firstname = localStorage.getItem("firstname")
+         lastname = localStorage.getItem("lastname")
+         is_login = localStorage.getItem("is_login")
+    }
+
+    const menu = (
+        <Menu
+          items={[
+            {
+              key: '1',
+              label: (
+                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                  1st menu item
+                </a>
+              ),
+            },
+            {
+              key: '2',
+              label: (
+                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+                  2nd menu item (disabled)
+                </a>
+              ),
+              icon: <SmileOutlined />,
+              disabled: true,
+            },
+            {
+              key: '3',
+              label: (
+                <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+                  3rd menu item (disabled)
+                </a>
+              ),
+              disabled: true,
+            },
+            {
+              key: '4',
+              danger: true,
+              label: 'a danger item',
+            },
+          ]}
+        />
+      );
+
+    const overlay = (
+        <div>
+            <a>Profile</a>
+            <a>Change Password</a>
+            <a>Loggou</a>
+        </div>
+    )
+    
+    return (
+        <div>
+            <Drawer
+               title="Flora"
+               placement={"left"}
+               width={500}
+               onClose={onClose}
+               visible={open}
+            >
+                <h1>Block A</h1>
+                <h1>Block A</h1>
+                <h1>Block A</h1>
+            </Drawer>
+            <body>
+                <header class="header" id="header">
+                    <div className={styles.cotainer}>
+                        <div>
+                            <a onClick={handleOpenDrawer}>
+                                <MenuFoldOutlined
+                                    className={styles.iconMenu}
+                                />
+                                <a>All</a>
+                            </a>
+                            <a>Home</a>
+                            <a>Category</a>
+                            <a>About us</a>
+                        </div>
+                        <div>
+                            {is_login == "0" &&  <Link href={"/login"}>Login</Link> }
+                            
+                            <Dropdown overlay={menu}>
+                                <a>
+                                    <Space>
+                                        {firstname+" "+lastname} <DownOutlined />
+                                    </Space>
+                                </a>
+                            </Dropdown>
+                        </div>
+                    </div>
+                </header>
+            </body>
+        </div>
+    )
+}
+
+export default Header;

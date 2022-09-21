@@ -19,7 +19,7 @@ const Footer = () => {
         >
             <Row>
                 <Col span={4}>
-                    <a className={styles.itemLink} href={""}>About Gmarket</a>
+                    <a className={styles.itemLink} href={"/about"}>About Gmarket</a>
                 </Col>
                 <Col span={4}>
                     <a className={styles.itemLink} href={""}>User Agreement</a>
