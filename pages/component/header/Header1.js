@@ -1,6 +1,9 @@
 import Link from "next/link";
 import React from "react"
 import styles from "../../../styles/component/Header1.module.css"
+import Button from "../button/Button";
+
+import {ShoppingCartOutlined,NotificationOutlined} from "@ant-design/icons"
 // import "../../../public/css/reset.min.css";
 // import "../../../public/css/style.min.css";
 // import "../../../public/css/boxicons.min.css";
@@ -13,7 +16,9 @@ import {
     Drawer,
     Dropdown,
     Space,
-    Menu
+    Menu,
+    Divider,
+    Badge
 } from "antd"
 const Header = () => {
     const [open,setOpen] = React.useState(false)
@@ -73,10 +78,31 @@ const Header = () => {
       );
 
     const overlay = (
-        <div>
-            <a>Profile</a>
-            <a>Change Password</a>
-            <a>Loggou</a>
+        <div className={styles.containAccount}>
+            <div className={styles.txtMain}>My Account</div>
+            {/* <Divider/> */}
+            <div className={styles.menuItem}>
+              <a>Set Birthday</a>
+              <a>Change Password</a>
+              <a>Address</a>
+            </div>
+            <div className={styles.txtMain}>My Shop</div>
+            <div className={styles.menuItem}>
+              <a>Point</a>
+              <a>Order</a>
+              <a>Wish List</a>
+              <a>Gift Cart</a>
+            </div>
+            <div className={styles.txtMain}>Setting</div>
+            <div className={styles.menuItem}>
+              <a>Clear cach</a>
+            </div>
+
+            <div style={{marginTop:10}}>
+              <Button
+                title={"Log out"}
+              />
+            </div>
         </div>
     )
     
@@ -110,7 +136,22 @@ const Header = () => {
                         <div>
                             {is_login == "0" &&  <Link href={"/login"}>Login</Link> }
                             
-                            <Dropdown overlay={menu}>
+                            <Badge count={1}>
+                              <NotificationOutlined
+                                style={{
+                                  fontSize:22
+                                }}
+                              />
+                            </Badge>
+                            <Badge count={2} >
+                              <ShoppingCartOutlined
+                                style={{
+                                  fontSize:22,
+                                  marginLeft : 15
+                                }}
+                              />
+                            </Badge>
+                            <Dropdown overlay={overlay}>
                                 <a>
                                     <Space>
                                         {firstname+" "+lastname} <DownOutlined />

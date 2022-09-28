@@ -14,3 +14,23 @@
 .cotainer a {
     padding: 0 15px;
 }
+
+.containAccount{
+    padding: 15px 35px;
+    background-color: white;
+}
+
+.txtMain{
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.menuItem a{
+    display: block;
+    padding: 5px 0;
+    font-size: 18px;
+}
+.menuItem a:hover{
+    text-decoration: underline;
+}
