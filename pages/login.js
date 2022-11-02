@@ -3,7 +3,7 @@ import LayouteOne from "./component/layout/LayouteOne";
 import { Button, Checkbox, Form, Input } from "antd";
 import React, { useState } from "react";
 import InputFloating from "./component/input/InputFloating";
-import { fetchData } from "./helper";
+import { fetchData, fetchDataDemo } from "./helper";
 import {useRouter} from "next/router"
 
 const Login = () => {
@@ -20,7 +20,7 @@ const Login = () => {
     setPassword(event.target.value)
   }
 
-  const onLogin = () => {
+  const onLogin1 = () => {
     setMessage("");
     var data = {
       "username" : username,
@@ -46,6 +46,39 @@ const Login = () => {
           localStorage.setItem("lastname",(res.profile.lastname));
           localStorage.setItem("email",(res.profile.email));
           localStorage.setItem("total_cart",res.total_cart);
+          route.push("/")
+        }
+    })
+  }
+
+  const onLogin = () => {
+    setMessage("");
+    var data = {
+      "username" : username,
+      "password" : password
+    }
+    fetchDataDemo("auth/login",data,"POST").then(res=>{
+        console.log(res)
+        if(res.error){
+          var messageTmp = ""
+          if(res.error.error_email){
+            messageTmp = res.error.error_email
+          }else if(res.error.error_login){
+            messageTmp = res.error.error_login
+          }
+          setMessage(messageTmp)
+        }else{
+          localStorage.setItem("is_login",1);
+          localStorage.setItem("access_token",res.access_token);
+          localStorage.setItem("refresh_token",res.refresh_token);
+          localStorage.setItem("username",res.profile.username);
+          localStorage.setItem("profile",JSON.stringify(res.profile));
+
+          // localStorage.setItem("username",(res.profile.username));
+          // localStorage.setItem("firstname",(res.profile.firstname));
+          // localStorage.setItem("lastname",(res.profile.lastname));
+          // localStorage.setItem("email",(res.profile.email));
+          // localStorage.setItem("total_cart",res.total_cart);
           route.push("/")
         }
     })

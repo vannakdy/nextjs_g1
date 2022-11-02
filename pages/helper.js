@@ -23,3 +23,23 @@ export const fetchData = (url = "", params = {} , method = "GET") => {
     })
 }
 
+
+export const fetchDataDemo = (url = "", params = {} , method = "GET") => {
+    var token = localStorage.getItem("access_token")
+    return axios({
+        url : "http://localhost:8080/api/" + url,
+        data : params,
+        method : method,
+        headers : {
+            'Authorization': 'Bearer ' +token 
+        }
+    }).then(res=>{
+        return res.data;
+    }).catch(err=>{
+        return {
+            error : true,
+            message : err
+        }
+    })
+}
+

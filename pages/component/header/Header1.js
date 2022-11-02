@@ -31,11 +31,21 @@ const Header = () => {
         setOpen(true)
     }
 
-     var firstname = "", lastname = "", is_login;
+     var firstname = "", lastname = "", is_login, username,access_token="";
     if(typeof window != "undefined"){
          firstname = localStorage.getItem("firstname")
          lastname = localStorage.getItem("lastname")
          is_login = localStorage.getItem("is_login")
+         username = localStorage.getItem("username")
+         access_token = localStorage.getItem("access_token")
+    }
+
+    const handleLogout = () => {
+      localStorage.setItem("is_login",0);
+      localStorage.setItem("access_token","");
+      localStorage.setItem("refresh_token","");
+      localStorage.setItem("profile","");
+      window.location.href = "/"
     }
 
     const menu = (
@@ -75,7 +85,7 @@ const Header = () => {
             },
           ]}
         />
-      );
+    );
 
     const overlay = (
         <div className={styles.containAccount}>
@@ -100,6 +110,7 @@ const Header = () => {
 
             <div style={{marginTop:10}}>
               <Button
+                onClick={handleLogout}
                 title={"Log out"}
               />
             </div>
@@ -129,35 +140,39 @@ const Header = () => {
                                 />
                                 <a>All</a>
                             </a>
-                            <a>Home</a>
-                            <a>Category</a>
+                            <a href="/">Home</a>
+                            <a href="/teacher">Teacher</a>
                             <a>About us</a>
                         </div>
                         <div>
-                            {is_login == "0" &&  <Link href={"/login"}>Login</Link> }
-                            
-                            <Badge count={1}>
+                            {/* <Badge count={1}>
                               <NotificationOutlined
                                 style={{
                                   fontSize:22
                                 }}
                               />
-                            </Badge>
-                            <Badge count={2} >
-                              <ShoppingCartOutlined
-                                style={{
-                                  fontSize:22,
-                                  marginLeft : 15
-                                }}
-                              />
-                            </Badge>
-                            <Dropdown overlay={overlay}>
-                                <a>
-                                    <Space>
-                                        {firstname+" "+lastname} <DownOutlined />
-                                    </Space>
-                                </a>
-                            </Dropdown>
+                            </Badge> */}
+
+                            {is_login == "0" &&  <Link href={"/login"}>Login</Link> }
+
+                            {is_login == "1" && <div>
+                              <Badge count={2} >
+                                <ShoppingCartOutlined
+                                  style={{
+                                    fontSize:22,
+                                    marginLeft : 15
+                                  }}
+                                />
+                              </Badge>
+                              <Dropdown overlay={overlay}>
+                                  <a>
+                                      <Space>
+                                          {username} <DownOutlined />
+                                      </Space>
+                                  </a>
+                              </Dropdown>
+                            </div>}
+
                         </div>
                     </div>
                 </header>
