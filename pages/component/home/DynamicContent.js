@@ -59,7 +59,6 @@ const DynamicContent = ({home}) => {
                         <h1 style={{textAlign:"center"}}>{item.title}</h1>
                         <Row justify="center"  gutter={5} style={{margin:"15px 0"}}>
                             {item.product && item.product.map((item1,index1)=>{
-                                    debugger
                                     return (
                                     <Col  
                                         onClick={()=>{

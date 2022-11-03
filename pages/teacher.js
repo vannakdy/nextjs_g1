@@ -15,14 +15,19 @@ const Teacher = () => {
 
   const getListTeacher = () => {
     fetchDataDemo("teacher",{},"GET").then(res=>{
-        console.log(res)
+      console.log(res)
     })
+  }
+
+  const handleGetAgain = () => {
+    getListTeacher()
   }
 
   return (
     <LayouteOne is_footer={false}>
       <Col span={12} offset={6}>
         <div className="txtBig">Teacher</div>
+        <Button onClick={handleGetAgain}>Get list Again</Button>
       </Col>
     </LayouteOne>
   );
